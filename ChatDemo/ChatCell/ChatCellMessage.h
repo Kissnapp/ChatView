@@ -10,6 +10,7 @@
 #import "UIKit/UIKit.h"
 
 FOUNDATION_EXPORT const CGFloat MessageCellBubblePadding;
+FOUNDATION_EXPORT const CGFloat MessageCellBubbleArrowWidth;
 FOUNDATION_EXPORT const CGFloat MessageCellTopPadding;
 FOUNDATION_EXPORT const CGFloat MessageCellMessageFontSize;
 FOUNDATION_EXPORT const CGFloat MessageCellMessageFromFontSize;
@@ -27,8 +28,20 @@ typedef NS_ENUM(NSUInteger, MessageDirection) {
     MessageFromOppsite
 };
 
-@interface ChatCellMessage : NSObject
+typedef NS_ENUM(NSUInteger, MessageType) {
+    MessageTypeText = 0,
+    MessageTypePicture,
+    MessageTypeVoice
+};
 
+@class ChatTableViewCell;
+
+@interface ChatCellMessage : NSObject
+{
+    @protected
+    BOOL _showAvatar;
+    MessageType _messageType;
+}
 @property (nonatomic, copy) NSString * messageFrom;
 @property (nonatomic, strong) UIImage * avatar;
 @property (nonatomic, assign) MessageDirection direction;
@@ -39,6 +52,10 @@ typedef NS_ENUM(NSUInteger, MessageDirection) {
 @property (nonatomic, readonly) CGSize calculatedBubbleSize;
 @property (nonatomic, readonly) CGSize calculatedCellSize;
 
+@property (nonatomic, readonly) MessageType messageType;
+
 - (BOOL)hasMessageFrom;
+
+- (ChatTableViewCell*)dequeAndCreateCellFromTableView:(UITableView*)tableView;
 
 @end

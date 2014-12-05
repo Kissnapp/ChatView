@@ -4,3 +4,4 @@
 
 #import "ChatViewController.h"
 #import "ChatCellTextMessage.h"
+#import "ChatCellImageMessage.h"

@@ -7,8 +7,10 @@
 //
 
 #import "ChatCellMessage.h"
+#import "ChatTableViewCell.h"
 
 const CGFloat MessageCellBubblePadding = 7.0f;
+const CGFloat MessageCellBubbleArrowWidth = 13.f;
 const CGFloat MessageCellTopPadding = 3.2f;
 const CGFloat MessageCellMessageFontSize = 15.0f;
 const CGFloat MessageCellMessageFromFontSize = 12.0f;
@@ -21,21 +23,11 @@ const CGFloat MessageCellMessageFromWidth = 200.f;
 
 #define _hasMessageFrom (!(!_messageFrom || 0 == _messageFrom.length))
 
+@interface ChatCellMessage()
+
+@end
+
 @implementation ChatCellMessage
-
-- (instancetype)init {
-    self = [super init];
-    if(self) {
-        [self applyDefaults];
-    }
-    return self;
-}
-
-- (void)applyDefaults {
-    _showAvatar = _avatar != nil;
-    _showMessageFrom = _hasMessageFrom;
-    _direction = MessageFromMe;
-}
 
 - (BOOL)hasMessageFrom {
     return _hasMessageFrom;
@@ -44,15 +36,27 @@ const CGFloat MessageCellMessageFromWidth = 200.f;
 - (BOOL)showAvatar {
     return _avatar && _showAvatar;
 }
-//
-//- (void)setShowAvatar:(BOOL)showAvatar {
-//    if(showAvatar && _avatar)
-//        _showAvatar=YES;
-//    
-//}
+
+- (void)setShowAvatar:(BOOL)showAvatar {
+    if(showAvatar && _avatar!=nil) {
+        _showAvatar = YES;
+        return;
+    }
+    _showAvatar = NO;
+}
 
 - (BOOL)showMessageFrom {
     return _hasMessageFrom && _showMessageFrom;
 }
 
+- (ChatTableViewCell*)dequeAndCreateCellFromTableView:(UITableView*)tableView
+{
+    static NSString * cellIdentifier = @"chatViewCell";
+    ChatTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if(!cell) {
+        cell = [[ChatTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    cell.message = self;
+    return cell;
+}
 @end

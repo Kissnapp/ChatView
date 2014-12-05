@@ -1,18 +1,21 @@
 //
-//  ChatCellTableViewCell.m
+//  ChatTableViewTextCell.m
 //  ChatDemo
 //
-//  Created by LIU CHONGLIANG on 2/12/14.
+//  Created by LIU CHONGLIANG on 5/12/14.
 //  Copyright (c) 2014 LIU CHONGLIANG. All rights reserved.
 //
 
-#import "ChatTableViewCell.h"
-#import "ChatCellMessage.h"
+#import "ChatTableViewTextCell.h"
+#import "ChatCellTextMessage.h"
 
-@interface ChatTableViewCell()
+@interface ChatTableViewTextCell()
+{
+    UILabel * _messageLabel;
+}
 @end
 
-@implementation ChatTableViewCell
+@implementation ChatTableViewTextCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -23,47 +26,47 @@
         _background = [[UIImageView alloc] initWithFrame:self.frame];
         [self.contentView addSubview:_background];
         
-//        _messageLabel = [[UILabel alloc] initWithFrame:self.contentView.frame];
-//        _messageLabel.numberOfLines = 0;
-//        _messageLabel.lineBreakMode = NSLineBreakByWordWrapping;
-//        _messageLabel.font = [UIFont systemFontOfSize:MessageCellMessageFontSize];
+        _messageLabel = [[UILabel alloc] initWithFrame:self.contentView.frame];
+        _messageLabel.numberOfLines = 0;
+        _messageLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        _messageLabel.font = [UIFont systemFontOfSize:MessageCellMessageFontSize];
         
         [self.textLabel removeFromSuperview];
-//        [self.contentView addSubview: _messageLabel];
+        [self.contentView addSubview: _messageLabel];
         [self.contentView addSubview:_avatarView];
         [self.contentView setFrame:self.frame];
     }
     return self;
 }
 
-- (void)awakeFromNib {
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-    // Configure the view for the selected state
-}
+//- (void)setMessage:(ChatCellTextMessage *)message
+//{
+//    _message = message;
+//    _messageLabel.text = message.message;
+//    if(_message.showAvatar) {
+//        _avatarView = [[UIImageView alloc] initWithImage:_message.avatar];
+//        _avatarView.frame = CGRectMake(MessageCellAvatarMargin, 0, MessageCellAvatarWidth, MessageCellAvatarWidth);
+//        [self.contentView addSubview:_avatarView];
+//    }
+//    if(_message.direction == MessageFromMe) {
+//        _background.image = [[UIImage imageNamed:@"talk_pop_r_p"] resizableImageWithCapInsets:UIEdgeInsetsMake(20.f, 20.f, 20.f, 20.f)];
+//    } else {
+//        _background.image = [[UIImage imageNamed:@"talk_pop_l_p"] resizableImageWithCapInsets:UIEdgeInsetsMake(20.f, 20.f, 20.f, 20.f)];
+//    }
+//    if(_message.messageFrom) {
+//        _messageFromLabel = [[UILabel alloc] init];
+//        _messageFromLabel.text = _message.messageFrom;
+//        _messageFromLabel.numberOfLines = 1;
+//        _messageFromLabel.font = [UIFont systemFontOfSize:MessageCellMessageFromFontSize];
+//        [self.contentView addSubview:_messageFromLabel];
+//    }
+//}
 
 - (void)setMessage:(ChatCellMessage *)message
 {
-    _message = message;
-    if(_message.showAvatar) {
-        _avatarView = [[UIImageView alloc] initWithImage:_message.avatar];
-        _avatarView.frame = CGRectMake(MessageCellAvatarMargin, 0, MessageCellAvatarWidth, MessageCellAvatarWidth);
-        [self.contentView addSubview:_avatarView];
-    }
-    if(_message.direction == MessageFromMe) {
-        _background.image = [[UIImage imageNamed:@"talk_pop_r_p"] resizableImageWithCapInsets:UIEdgeInsetsMake(20.f, 20.f, 20.f, 20.f)];
-    } else {
-        _background.image = [[UIImage imageNamed:@"talk_pop_l_p"] resizableImageWithCapInsets:UIEdgeInsetsMake(20.f, 20.f, 20.f, 20.f)];
-    }
-    if(_message.messageFrom) {
-        _messageFromLabel = [[UILabel alloc] init];
-        _messageFromLabel.text = _message.messageFrom;
-        _messageFromLabel.numberOfLines = 1;
-        _messageFromLabel.font = [UIFont systemFontOfSize:MessageCellMessageFromFontSize];
-        [self.contentView addSubview:_messageFromLabel];
+    [super setMessage:message];
+    if([message isKindOfClass:[ChatCellTextMessage class]]) {
+        _messageLabel.text = ((ChatCellTextMessage*)message).message;
     }
 }
 
@@ -109,12 +112,12 @@
         [_background setFrame:CGRectMake(messageLabelX, messageLabelY,
                                          frame.size.width + MessageCellBubblePadding + bubbleArrowEdgeWidth, height)];
     }
-//    [_messageLabel setFrame:CGRectMake(bubbleArrowEdgeWidth + messageLabelX, messageLabelY, frame.size.width, height)];
+    [_messageLabel setFrame:CGRectMake(bubbleArrowEdgeWidth + messageLabelX, messageLabelY, frame.size.width, height)];
     [self.contentView setFrame:CGRectMake(0, MessageCellTopPadding, windowWidth, frame.size.height)];
 }
 
-- (void)layoutSubviews {
-    [self updateLayout];
+- (UILabel*)textLabel {
+    return _messageLabel;
 }
 
 @end

@@ -12,7 +12,7 @@
 @interface ChatCellTextMessage : ChatCellMessage
 
 + (CGSize)sizeForCellMessage:(ChatCellTextMessage*)message constrainedToWidth:(CGFloat)width;
-+ (CGSize)sizeForTextFromMessage:(ChatCellTextMessage*)message constrainedToWidth:(CGFloat)width;
++ (CGSize)sizeForBubbleMessage:(ChatCellTextMessage*)message constrainedToWidth:(CGFloat)width;
 
 + (instancetype)messageWithString:(NSString *)message;
 + (instancetype)messageWithString:(NSString *)message avatarImage:(UIImage *)image;

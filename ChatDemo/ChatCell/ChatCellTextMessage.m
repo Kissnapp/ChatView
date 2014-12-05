@@ -7,6 +7,7 @@
 //
 
 #import "ChatCellTextMessage.h"
+#import "ChatTableViewTextCell.h"
 
 @interface ChatCellTextMessage()
 {
@@ -17,12 +18,12 @@
 @implementation ChatCellTextMessage
 
 + (CGSize)sizeForCellMessage:(ChatCellTextMessage*)message constrainedToWidth:(CGFloat)width {
-    CGSize size = [[self class] sizeForTextFromMessage:message constrainedToWidth:width];
+    CGSize size = [[self class] sizeForBubbleMessage:message constrainedToWidth:width];
     CGFloat calculatedHeight = MessageCellBubblePadding + size.height + MessageCellTopPadding*2;
     return CGSizeMake(size.width, calculatedHeight);
 }
 
-+ (CGSize)sizeForTextFromMessage:(ChatCellTextMessage*)message constrainedToWidth:(CGFloat)width {
++ (CGSize)sizeForBubbleMessage:(ChatCellTextMessage*)message constrainedToWidth:(CGFloat)width {
     // must be multi-line
 //    return ceil([message.message sizeWithFont:[UIFont systemFontOfSize:MessageCellMessageFontSize]
 //                                constrainedToSize:CGSizeMake(width, MAXFLOAT)
@@ -101,6 +102,17 @@
 
 - (CGSize)calculatedBubbleSize {
     return _calculatedBubbleSize;
+}
+
+- (ChatTableViewCell*)dequeAndCreateCellFromTableView:(UITableView*)tableView
+{
+    static NSString * cellIdentifier = @"chatViewTextCell";
+    ChatTableViewTextCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if(!cell) {
+        cell = [[ChatTableViewTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    cell.message = self;
+    return cell;
 }
 
 @end

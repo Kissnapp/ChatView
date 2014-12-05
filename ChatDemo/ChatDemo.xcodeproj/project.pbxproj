@@ -12,6 +12,9 @@
 		EC27456C1A305635009BD40F /* avatar-heshang.png in Resources */ = {isa = PBXBuildFile; fileRef = EC27456B1A305635009BD40F /* avatar-heshang.png */; };
 		EC27456E1A3058A2009BD40F /* avatar-women.png in Resources */ = {isa = PBXBuildFile; fileRef = EC27456D1A3058A2009BD40F /* avatar-women.png */; };
 		EC3B599F1A315A4B00738865 /* ChatCellMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3B599E1A315A4B00738865 /* ChatCellMessage.m */; };
+		EC3B59A21A3183EE00738865 /* ChatCellImageMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3B59A11A3183EE00738865 /* ChatCellImageMessage.m */; };
+		EC3B59A41A318A2700738865 /* picture-1.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3B59A31A318A2700738865 /* picture-1.png */; };
+		EC3B59AA1A31B29B00738865 /* ChatTableViewTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3B59A91A31B29B00738865 /* ChatTableViewTextCell.m */; };
 		EC9F08561A2D96AB000CA332 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9F08551A2D96AB000CA332 /* AppDelegate.swift */; };
 		EC9F08581A2D96AB000CA332 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9F08571A2D96AB000CA332 /* ViewController.swift */; };
 		EC9F085B1A2D96AB000CA332 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC9F08591A2D96AB000CA332 /* Main.storyboard */; };
@@ -33,6 +36,11 @@
 		EC27456D1A3058A2009BD40F /* avatar-women.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar-women.png"; sourceTree = "<group>"; };
 		EC3B599D1A315A4B00738865 /* ChatCellMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCellMessage.h; sourceTree = "<group>"; };
 		EC3B599E1A315A4B00738865 /* ChatCellMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCellMessage.m; sourceTree = "<group>"; };
+		EC3B59A01A3183EE00738865 /* ChatCellImageMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCellImageMessage.h; sourceTree = "<group>"; };
+		EC3B59A11A3183EE00738865 /* ChatCellImageMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCellImageMessage.m; sourceTree = "<group>"; };
+		EC3B59A31A318A2700738865 /* picture-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-1.png"; sourceTree = "<group>"; };
+		EC3B59A81A31B29B00738865 /* ChatTableViewTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTableViewTextCell.h; sourceTree = "<group>"; };
+		EC3B59A91A31B29B00738865 /* ChatTableViewTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTableViewTextCell.m; sourceTree = "<group>"; };
 		EC9F08501A2D96AB000CA332 /* ChatDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC9F08541A2D96AB000CA332 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC9F08551A2D96AB000CA332 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,12 +117,16 @@
 				EC9F08811A2DA2AF000CA332 /* Resources */,
 				EC9F08771A2D9735000CA332 /* ChatTableViewCell.h */,
 				EC9F08781A2D9735000CA332 /* ChatTableViewCell.m */,
+				EC3B59A81A31B29B00738865 /* ChatTableViewTextCell.h */,
+				EC3B59A91A31B29B00738865 /* ChatTableViewTextCell.m */,
 				EC9F087A1A2D9997000CA332 /* ChatViewController.h */,
 				EC9F087B1A2D9997000CA332 /* ChatViewController.m */,
-				EC9F087D1A2D9FC7000CA332 /* ChatCellTextMessage.h */,
-				EC9F087E1A2D9FC7000CA332 /* ChatCellTextMessage.m */,
 				EC3B599D1A315A4B00738865 /* ChatCellMessage.h */,
 				EC3B599E1A315A4B00738865 /* ChatCellMessage.m */,
+				EC9F087D1A2D9FC7000CA332 /* ChatCellTextMessage.h */,
+				EC9F087E1A2D9FC7000CA332 /* ChatCellTextMessage.m */,
+				EC3B59A01A3183EE00738865 /* ChatCellImageMessage.h */,
+				EC3B59A11A3183EE00738865 /* ChatCellImageMessage.m */,
 			);
 			path = ChatCell;
 			sourceTree = "<group>";
@@ -122,6 +134,7 @@
 		EC9F08811A2DA2AF000CA332 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EC3B59A31A318A2700738865 /* picture-1.png */,
 				EC27456D1A3058A2009BD40F /* avatar-women.png */,
 				EC27456B1A305635009BD40F /* avatar-heshang.png */,
 				EC2745671A3041DF009BD40F /* avatar-placeholder.png */,
@@ -201,6 +214,7 @@
 				EC9F08601A2D96AB000CA332 /* LaunchScreen.xib in Resources */,
 				EC9F085D1A2D96AB000CA332 /* Images.xcassets in Resources */,
 				EC9F08881A2DA2AF000CA332 /* talk_pop_r_nor@2x.png in Resources */,
+				EC3B59A41A318A2700738865 /* picture-1.png in Resources */,
 				EC27456E1A3058A2009BD40F /* avatar-women.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,7 +228,9 @@
 			files = (
 				EC9F08581A2D96AB000CA332 /* ViewController.swift in Sources */,
 				EC9F08791A2D9735000CA332 /* ChatTableViewCell.m in Sources */,
+				EC3B59AA1A31B29B00738865 /* ChatTableViewTextCell.m in Sources */,
 				EC9F087F1A2D9FC7000CA332 /* ChatCellTextMessage.m in Sources */,
+				EC3B59A21A3183EE00738865 /* ChatCellImageMessage.m in Sources */,
 				EC3B599F1A315A4B00738865 /* ChatCellMessage.m in Sources */,
 				EC9F087C1A2D9997000CA332 /* ChatViewController.m in Sources */,
 				EC9F08561A2D96AB000CA332 /* AppDelegate.swift in Sources */,

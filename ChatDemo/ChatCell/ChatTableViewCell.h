@@ -7,10 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ChatCellTextMessage.h"
 
+@class ChatCellMessage;
 @interface ChatTableViewCell : UITableViewCell
+{
+    @protected
+    UILabel * _messageFromLabel;
+    UIImageView * _background; // bubble view
+    UIImageView * _avatarView;
+    ChatCellMessage * _message;
+}
 
-@property (nonatomic, strong) ChatCellTextMessage * message;
+@property (nonatomic, strong) ChatCellMessage * message;
+
+- (void)updateLayout;
 
 @end

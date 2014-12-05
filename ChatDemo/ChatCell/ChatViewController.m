@@ -8,7 +8,7 @@
 
 #import "ChatViewController.h"
 #import "ChatTableViewCell.h"
-#import "ChatCellTextMessage.h"
+#import "ChatCellMessage.h"
 
 @interface ChatViewController ()<UITableViewDataSource, UITableViewDelegate>
 {
@@ -53,19 +53,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString * cellIdentifier = @"chatViewCell";
-    ChatTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if(!cell) {
-        cell = [[ChatTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    ChatCellTextMessage * cm = _messages[indexPath.row];
-    cell.message = cm;
+    ChatCellMessage * cm = _messages[indexPath.row];
+    ChatTableViewCell * cell = [cm dequeAndCreateCellFromTableView:tableView];
+//    cell.message = cm;
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ChatCellTextMessage * msg = (ChatCellTextMessage*)_messages[indexPath.row];
+    ChatCellMessage * msg = (ChatCellMessage*)_messages[indexPath.row];
     if (msg.direction == MessageFromOppsite) {
         msg.messageFrom = @"YoYo";
         msg.showMessageFrom = YES;
