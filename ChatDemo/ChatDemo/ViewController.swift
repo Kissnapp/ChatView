@@ -31,7 +31,7 @@ class ViewController: UIViewController {
             ChatCellTextMessage(string: "Yes, but even one case of someone getting hurt because of the defect would be a PR nightmare, and that’s on top of the charges of negligence we’d have to face in court. We need to get ahead of this now", direction: MessageDirection.FromOppsite, avatarImage: UIImage(named: "avatar-women")),
             ChatCellTextMessage(string: "All right!", direction: MessageDirection.FromOppsite, avatarImage: UIImage(named: "avatar-women")),
             ChatCellTextMessage(string: "OMG!", direction: MessageDirection.FromOppsite, avatarImage: UIImage(named: "avatar-women")),
-            ChatCellImageMessage(image: UIImage(named: "picture-1"), avatarImage: UIImage(named: "avatar-heshang")),
+//            ChatCellImageMessage(image: UIImage(named: "picture-1"), avatarImage: UIImage(named: "avatar-heshang")),
         ]
         vc.pushMessages(messages)
         self.navigationController?.pushViewController(vc, animated: true)

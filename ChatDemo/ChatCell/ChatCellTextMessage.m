@@ -96,10 +96,6 @@
 {
     if([self hasMessageFrom] && [self showMessageFrom]) {
         CGSize rect = CGSizeMake(_calulatedCellSize.width, _calulatedCellSize.height + MESSAGE_FROM_HEIGHT);
-//        if (self.showAvatar) {
-//            rect.height = fmax(_calulatedCellSize.height + MESSAGE_FROM_HEIGHT,
-//                               MessageCellAvatarWidth/* So far equals to Height */);
-//        }
         return rect;
     }
     return _calulatedCellSize;

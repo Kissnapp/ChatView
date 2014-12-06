@@ -23,13 +23,7 @@
         _background = [[UIImageView alloc] initWithFrame:self.frame];
         [self.contentView addSubview:_background];
         
-//        _messageLabel = [[UILabel alloc] initWithFrame:self.contentView.frame];
-//        _messageLabel.numberOfLines = 0;
-//        _messageLabel.lineBreakMode = NSLineBreakByWordWrapping;
-//        _messageLabel.font = [UIFont systemFontOfSize:MessageCellMessageFontSize];
-        
         [self.textLabel removeFromSuperview];
-//        [self.contentView addSubview: _messageLabel];
         [self.contentView addSubview:_avatarView];
         [self.contentView setFrame:self.frame];
     }
@@ -63,6 +57,7 @@
         _messageFromLabel.text = _message.messageFrom;
         _messageFromLabel.numberOfLines = 1;
         _messageFromLabel.font = [UIFont systemFontOfSize:MessageCellMessageFromFontSize];
+        _messageFromLabel.textColor = [UIColor grayColor];
         [self.contentView addSubview:_messageFromLabel];
     }
 }
@@ -109,7 +104,6 @@
         [_background setFrame:CGRectMake(messageLabelX, messageLabelY,
                                          frame.size.width + MessageCellBubblePadding + bubbleArrowEdgeWidth, height)];
     }
-//    [_messageLabel setFrame:CGRectMake(bubbleArrowEdgeWidth + messageLabelX, messageLabelY, frame.size.width, height)];
     [self layoutMessageBody:CGRectMake(bubbleArrowEdgeWidth + messageLabelX, messageLabelY, frame.size.width, height)];
     [self.contentView setFrame:CGRectMake(0, MessageCellTopPadding, windowWidth, frame.size.height)];
 }
