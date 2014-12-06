@@ -110,8 +110,12 @@
                                          frame.size.width + MessageCellBubblePadding + bubbleArrowEdgeWidth, height)];
     }
 //    [_messageLabel setFrame:CGRectMake(bubbleArrowEdgeWidth + messageLabelX, messageLabelY, frame.size.width, height)];
+    [self layoutMessageBody:CGRectMake(bubbleArrowEdgeWidth + messageLabelX, messageLabelY, frame.size.width, height)];
     [self.contentView setFrame:CGRectMake(0, MessageCellTopPadding, windowWidth, frame.size.height)];
 }
+
+- (void)layoutMessageBody:(CGRect)frame
+{}
 
 - (void)layoutSubviews {
     [self updateLayout];

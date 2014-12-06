@@ -20,6 +20,6 @@
 
 @property (nonatomic, strong) ChatCellMessage * message;
 
-- (void)updateLayout;
+- (void)layoutMessageBody:(CGRect)frame;
 
 @end
