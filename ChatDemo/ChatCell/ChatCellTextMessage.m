@@ -17,20 +17,20 @@
 
 @implementation ChatCellTextMessage
 
-+ (CGSize)sizeForCellMessage:(ChatCellTextMessage*)message constrainedToWidth:(CGFloat)width {
-    CGSize size = [[self class] sizeForBubbleMessage:message constrainedToWidth:width];
+- (CGSize)sizeForCellMessage:(ChatCellMessage*)message constrainedToWidth:(CGFloat)width {
+    CGSize size = [self sizeForBubbleMessage:message constrainedToWidth:width];
     CGFloat calculatedHeight = MessageCellBubblePadding + size.height + MessageCellTopPadding*2;
     return CGSizeMake(size.width, calculatedHeight);
 }
 
-+ (CGSize)sizeForBubbleMessage:(ChatCellTextMessage*)message constrainedToWidth:(CGFloat)width {
+- (CGSize)sizeForBubbleMessage:(ChatCellMessage*)message constrainedToWidth:(CGFloat)width {
     // must be multi-line
-//    return ceil([message.message sizeWithFont:[UIFont systemFontOfSize:MessageCellMessageFontSize]
+//    return ceil([((ChatCellTextMessage*)message).message sizeWithFont:[UIFont systemFontOfSize:MessageCellMessageFontSize]
 //                                constrainedToSize:CGSizeMake(width, MAXFLOAT)
 //                                    lineBreakMode:NSLineBreakByWordWrapping].height);
-    
+
     UIFont * f = [UIFont systemFontOfSize:MessageCellMessageFontSize];
-    CGRect rect = [message.message boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
+    CGRect rect = [((ChatCellTextMessage*)message).message boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
                                                 options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
                                              attributes:@{NSFontAttributeName:f}
                                                 context:nil];
@@ -86,7 +86,7 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     
-    _calulatedCellSize = [[self class] sizeForCellMessage:self constrainedToWidth:screenWidth * (2.f/3.f)];
+    _calulatedCellSize = [self sizeForCellMessage:self constrainedToWidth:screenWidth * (2.f/3.f)];
     
     // 除去Top－Margin
     _calculatedBubbleSize = CGSizeMake(_calulatedCellSize.width, _calulatedCellSize.height - MessageCellTopPadding*2);
@@ -95,7 +95,12 @@
 - (CGSize)calculatedCellSize
 {
     if([self hasMessageFrom] && [self showMessageFrom]) {
-        return CGSizeMake(_calulatedCellSize.width, _calulatedCellSize.height + MESSAGE_FROM_HEIGHT);
+        CGSize rect = CGSizeMake(_calulatedCellSize.width, _calulatedCellSize.height + MESSAGE_FROM_HEIGHT);
+//        if (self.showAvatar) {
+//            rect.height = fmax(_calulatedCellSize.height + MESSAGE_FROM_HEIGHT,
+//                               MessageCellAvatarWidth/* So far equals to Height */);
+//        }
+        return rect;
     }
     return _calulatedCellSize;
 }

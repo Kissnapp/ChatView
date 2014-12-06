@@ -54,6 +54,8 @@ typedef NS_ENUM(NSUInteger, MessageType) {
 
 @property (nonatomic, readonly) MessageType messageType;
 
+- (CGSize)sizeForCellMessage:(ChatCellMessage*)message constrainedToWidth:(CGFloat)width;
+
 - (BOOL)hasMessageFrom;
 
 - (ChatTableViewCell*)dequeAndCreateCellFromTableView:(UITableView*)tableView;

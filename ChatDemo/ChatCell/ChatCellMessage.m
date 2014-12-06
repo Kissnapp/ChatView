@@ -29,6 +29,10 @@ const CGFloat MessageCellMessageFromWidth = 200.f;
 
 @implementation ChatCellMessage
 
+- (CGSize)sizeForCellMessage:(ChatCellMessage*)message constrainedToWidth:(CGFloat)width {
+    return CGSizeMake(MessageCellAvatarWidth, MessageCellAvatarWidth);
+}
+
 - (BOOL)hasMessageFrom {
     return _hasMessageFrom;
 }

@@ -11,9 +11,6 @@
 
 @interface ChatCellTextMessage : ChatCellMessage
 
-+ (CGSize)sizeForCellMessage:(ChatCellTextMessage*)message constrainedToWidth:(CGFloat)width;
-+ (CGSize)sizeForBubbleMessage:(ChatCellTextMessage*)message constrainedToWidth:(CGFloat)width;
-
 + (instancetype)messageWithString:(NSString *)message;
 + (instancetype)messageWithString:(NSString *)message avatarImage:(UIImage *)image;
 + (instancetype)messageWithString:(NSString *)message direction:(MessageDirection)direction avatarImage:(UIImage *)image;
