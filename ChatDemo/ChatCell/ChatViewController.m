@@ -7,7 +7,7 @@
 //
 
 #import "ChatViewController.h"
-#import "ChatTableViewCell.h"
+#import "ChatTableViewCellTemplate.h"
 #import "ChatCellMessage.h"
 
 @interface ChatViewController ()<UITableViewDataSource, UITableViewDelegate>
@@ -54,7 +54,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ChatCellMessage * cm = _messages[indexPath.row];
-    ChatTableViewCell * cell = [cm dequeAndCreateCellFromTableView:tableView];
+    ChatTableViewCellTemplate * cell = [cm dequeAndCreateCellFromTableView:tableView];
 //    cell.message = cm;
     return cell;
 }
@@ -85,8 +85,8 @@
     self.view.backgroundColor = self.view.backgroundColor;
 }
 
-- (void) viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_messages.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-}
+//- (void) viewDidAppear:(BOOL)animated {
+//    [super viewDidAppear:animated];
+//    [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_messages.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+//}
 @end

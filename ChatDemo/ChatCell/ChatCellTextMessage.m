@@ -7,35 +7,14 @@
 //
 
 #import "ChatCellTextMessage.h"
-#import "ChatTableViewTextCell.h"
+#import "ChatBubbleTextCell.h"
 
 @interface ChatCellTextMessage()
 {
-    CGSize _calulatedCellSize, _calculatedBubbleSize;
 }
 @end
 
 @implementation ChatCellTextMessage
-
-- (CGSize)sizeForCellMessage:(ChatCellMessage*)message constrainedToWidth:(CGFloat)width {
-    CGSize size = [self sizeForBubbleMessage:message constrainedToWidth:width];
-    CGFloat calculatedHeight = MessageCellBubblePadding + size.height + MessageCellTopPadding*2;
-    return CGSizeMake(size.width, calculatedHeight);
-}
-
-- (CGSize)sizeForBubbleMessage:(ChatCellMessage*)message constrainedToWidth:(CGFloat)width {
-    // must be multi-line
-//    return ceil([((ChatCellTextMessage*)message).message sizeWithFont:[UIFont systemFontOfSize:MessageCellMessageFontSize]
-//                                constrainedToSize:CGSizeMake(width, MAXFLOAT)
-//                                    lineBreakMode:NSLineBreakByWordWrapping].height);
-
-    UIFont * f = [UIFont systemFontOfSize:MessageCellMessageFontSize];
-    CGRect rect = [((ChatCellTextMessage*)message).message boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
-                                                options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
-                                             attributes:@{NSFontAttributeName:f}
-                                                context:nil];
-    return CGSizeMake(ceil(rect.size.width), ceil(rect.size.height));
-}
 
 + (instancetype)messageWithString:(NSString *)message
 {
@@ -86,10 +65,7 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
     
-    _calulatedCellSize = [self sizeForCellMessage:self constrainedToWidth:screenWidth * (2.f/3.f)];
-    
-    // 除去Top－Margin
-    _calculatedBubbleSize = CGSizeMake(_calulatedCellSize.width, _calulatedCellSize.height - MessageCellTopPadding*2);
+    [self calculateSizesByConstranedWidth:screenWidth * 0.7];
 }
 
 - (CGSize)calculatedCellSize
@@ -101,19 +77,44 @@
     return _calulatedCellSize;
 }
 
-- (CGSize)calculatedBubbleSize {
-    return _calculatedBubbleSize;
-}
-
-- (ChatTableViewCell*)dequeAndCreateCellFromTableView:(UITableView*)tableView
+- (ChatTableViewCellTemplate*)dequeAndCreateCellFromTableView:(UITableView*)tableView
 {
     static NSString * cellIdentifier = @"chatViewTextCell";
-    ChatTableViewTextCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    ChatBubbleTextCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if(!cell) {
-        cell = [[ChatTableViewTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[ChatBubbleTextCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     cell.message = self;
     return cell;
+}
+
+- (void)calculateSizesByConstranedWidth:(CGFloat)width {
+    CGSize size = [self sizeForBubbleMessage:self constrainedToWidth:width - (MessageCellBubblePadding*2 + MessageCellBubbleTailWidth)];
+    CGFloat calculatedHeight = size.height;
+//    if(calculatedHeight < MessageCellAvatarWidth) {
+//        calculatedHeight = MessageCellAvatarWidth + MessageCellTopPadding;
+//        size.height = MessageCellAvatarWidth;
+//    }
+    _calulatedCellSize = CGSizeMake(width + (MessageCellBubblePadding*2 + MessageCellBubbleTailWidth)
+                                    , calculatedHeight + MessageCellTopPadding  + MessageCellBubblePadding*2);
+    _calculatedContentBoxSize = CGSizeMake(size.width + (MessageCellBubblePadding*2)
+                                        , calculatedHeight + MessageCellBubblePadding*2);
+    
+    _calculatedMessageSize = size;
+}
+
+- (CGSize)sizeForBubbleMessage:(ChatCellMessage*)message constrainedToWidth:(CGFloat)width {
+    // must be multi-line
+//    return ceil([((ChatCellTextMessage*)message).message sizeWithFont:[UIFont systemFontOfSize:MessageCellMessageFontSize]
+//                                constrainedToSize:CGSizeMake(width, MAXFLOAT)
+//                                    lineBreakMode:NSLineBreakByWordWrapping].height);
+
+    UIFont * f = [UIFont systemFontOfSize:MessageCellMessageFontSize];
+    CGRect rect = [((ChatCellTextMessage*)message).message boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
+                                                options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
+                                             attributes:@{NSFontAttributeName:f}
+                                                context:nil];
+    return CGSizeMake(ceil(rect.size.width), ceil(rect.size.height));
 }
 
 @end

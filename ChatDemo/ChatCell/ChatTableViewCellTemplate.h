@@ -9,17 +9,17 @@
 #import <UIKit/UIKit.h>
 
 @class ChatCellMessage;
-@interface ChatTableViewCell : UITableViewCell
+@interface ChatTableViewCellTemplate : UITableViewCell
 {
     @protected
     UILabel * _messageFromLabel;
-    UIImageView * _background; // bubble view
     UIImageView * _avatarView;
+    UIView * _bodyView;
     ChatCellMessage * _message;
 }
 
 @property (nonatomic, strong) ChatCellMessage * message;
 
-- (void)layoutMessageBody:(CGRect)frame;
+- (void)layoutMessageBody;
 
 @end

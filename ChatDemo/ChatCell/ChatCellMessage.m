@@ -7,10 +7,10 @@
 //
 
 #import "ChatCellMessage.h"
-#import "ChatTableViewCell.h"
+#import "ChatTableViewCellTemplate.h"
 
 const CGFloat MessageCellBubblePadding = 7.0f;
-const CGFloat MessageCellBubbleArrowWidth = 13.f;
+const CGFloat MessageCellBubbleTailWidth = 5.f;
 const CGFloat MessageCellTopPadding = 3.2f;
 const CGFloat MessageCellMessageFontSize = 15.0f;
 const CGFloat MessageCellMessageFromFontSize = 12.0f;
@@ -19,7 +19,6 @@ const CGFloat MessageCellAvatarWidth = 40.f;
 const CGFloat MessageCellAvatarMargin = 3.f;
 const CGFloat MessageCellMessageFromMargin = 3.f;
 const CGFloat MessageCellMessageFromHeight = 10.f;
-const CGFloat MessageCellMessageFromWidth = 200.f;
 
 #define _hasMessageFrom (!(!_messageFrom || 0 == _messageFrom.length))
 
@@ -29,8 +28,9 @@ const CGFloat MessageCellMessageFromWidth = 200.f;
 
 @implementation ChatCellMessage
 
-- (CGSize)sizeForCellMessage:(ChatCellMessage*)message constrainedToWidth:(CGFloat)width {
-    return CGSizeMake(MessageCellAvatarWidth, MessageCellAvatarWidth);
+- (void)calculateSizesByConstranedWidth:(CGFloat)width {
+    _calculatedContentBoxSize = _calulatedCellSize =
+    CGSizeMake(MessageCellAvatarWidth, MessageCellAvatarWidth);
 }
 
 - (BOOL)hasMessageFrom {
@@ -53,12 +53,20 @@ const CGFloat MessageCellMessageFromWidth = 200.f;
     return _hasMessageFrom && _showMessageFrom;
 }
 
-- (ChatTableViewCell*)dequeAndCreateCellFromTableView:(UITableView*)tableView
+- (CGSize)calculatedContentBoxSize {
+    return _calculatedContentBoxSize;
+}
+
+- (CGSize)calculatedCellSize {
+    return _calulatedCellSize;
+}
+
+- (ChatTableViewCellTemplate*)dequeAndCreateCellFromTableView:(UITableView*)tableView
 {
     static NSString * cellIdentifier = @"chatViewCell";
-    ChatTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    ChatTableViewCellTemplate * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if(!cell) {
-        cell = [[ChatTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[ChatTableViewCellTemplate alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     cell.message = self;
     return cell;

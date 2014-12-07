@@ -6,13 +6,15 @@
 //  Copyright (c) 2014 LIU CHONGLIANG. All rights reserved.
 //
 
-#import "ChatTableViewCell.h"
+#import "ChatTableViewCellTemplate.h"
 #import "ChatCellMessage.h"
 
-@interface ChatTableViewCell()
+@interface ChatTableViewCellTemplate()
+{
+}
 @end
 
-@implementation ChatTableViewCell
+@implementation ChatTableViewCellTemplate
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -20,9 +22,8 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self setBackgroundColor:[UIColor clearColor]];
         
-        _background = [[UIImageView alloc] initWithFrame:self.frame];
-        [self.contentView addSubview:_background];
-        
+        _bodyView = [[UIView alloc] init];
+        [self.contentView addSubview:_bodyView];
         [self.textLabel removeFromSuperview];
         [self.contentView addSubview:_avatarView];
         [self.contentView setFrame:self.frame];
@@ -43,21 +44,22 @@
 {
     _message = message;
     if(_message.showAvatar) {
+        if(_avatarView)
+           [_avatarView removeFromSuperview];
         _avatarView = [[UIImageView alloc] initWithImage:_message.avatar];
         _avatarView.frame = CGRectMake(MessageCellAvatarMargin, 0, MessageCellAvatarWidth, MessageCellAvatarWidth);
         [self.contentView addSubview:_avatarView];
     }
-    if(_message.direction == MessageFromMe) {
-        _background.image = [[UIImage imageNamed:@"talk_pop_r_p"] resizableImageWithCapInsets:UIEdgeInsetsMake(20.f, 20.f, 20.f, 20.f)];
-    } else {
-        _background.image = [[UIImage imageNamed:@"talk_pop_l_p"] resizableImageWithCapInsets:UIEdgeInsetsMake(20.f, 20.f, 20.f, 20.f)];
-    }
     if(_message.messageFrom) {
+        if(_messageFromLabel) {
+            [_messageFromLabel removeFromSuperview];
+        }
         _messageFromLabel = [[UILabel alloc] init];
         _messageFromLabel.text = _message.messageFrom;
         _messageFromLabel.numberOfLines = 1;
         _messageFromLabel.font = [UIFont systemFontOfSize:MessageCellMessageFromFontSize];
         _messageFromLabel.textColor = [UIColor grayColor];
+//        [_messageFromLabel setBackgroundColor:[UIColor grayColor]];
         [self.contentView addSubview:_messageFromLabel];
     }
 }
@@ -65,9 +67,10 @@
 - (void)updateLayout {
     CGRect frame = self.contentView.frame;
     CGFloat windowWidth = frame.size.width;
-    CGFloat width = _message.calculatedBubbleSize.width;
-    CGFloat height = _message.calculatedBubbleSize.height;
-    CGFloat bubbleArrowEdgeWidth = MessageCellBubbleArrowWidth;
+    CGSize contentSize = _message.calculatedContentBoxSize;
+    CGFloat boxWidth = contentSize.width;
+    CGFloat boxHeight = contentSize.height;
+    CGFloat messageBodyX = 0;
     CGFloat messageLabelX = 0;
     CGFloat messageLabelY = 0;
     CGFloat avatarWidth = MessageCellAvatarMargin;
@@ -87,28 +90,30 @@
         messageLabelY = MESSAGE_FROM_HEIGHT;
         CGFloat fromX = messageLabelX + 5;
         if(_message.direction == MessageFromMe) {
-            fromX = windowWidth - avatarWidth - MessageCellMessageFromWidth;
+            fromX = windowWidth - avatarWidth - boxWidth - MessageCellBubbleTailWidth;
             [_messageFromLabel setTextAlignment:NSTextAlignmentRight];
         }
-        [_messageFromLabel setFrame:CGRectMake(fromX, 0, MessageCellMessageFromWidth, MessageCellMessageFromHeight)];
+        [_messageFromLabel setFrame:CGRectMake(fromX, 0, boxWidth, MessageCellMessageFromHeight)];
     }
     
-    frame.size.width = width;
+    frame.size.width = boxWidth;
     if (_message.direction == MessageFromMe) {
-        frame.origin.x += windowWidth - width;
-        [_background setFrame:CGRectMake(frame.origin.x - MessageCellBubblePadding - bubbleArrowEdgeWidth + messageLabelX, messageLabelY,
-                                         frame.size.width + MessageCellBubblePadding + bubbleArrowEdgeWidth, height)];
-        bubbleArrowEdgeWidth = frame.origin.x - bubbleArrowEdgeWidth;
+        frame.origin.x += windowWidth - boxWidth - MessageCellBubbleTailWidth;
+        messageBodyX = frame.origin.x;
+        avatarWidth = -avatarWidth;
     }
     else {
-        [_background setFrame:CGRectMake(messageLabelX, messageLabelY,
-                                         frame.size.width + MessageCellBubblePadding + bubbleArrowEdgeWidth, height)];
     }
-    [self layoutMessageBody:CGRectMake(bubbleArrowEdgeWidth + messageLabelX, messageLabelY, frame.size.width, height)];
+    
+//    [_bodyView setBackgroundColor:[UIColor grayColor]];
+    [_bodyView setFrame:CGRectMake(messageBodyX + avatarWidth, messageLabelY,
+                                   frame.size.width + MessageCellBubbleTailWidth, boxHeight)];
+    
+    [self layoutMessageBody];
     [self.contentView setFrame:CGRectMake(0, MessageCellTopPadding, windowWidth, frame.size.height)];
 }
 
-- (void)layoutMessageBody:(CGRect)frame
+- (void)layoutMessageBody
 {}
 
 - (void)layoutSubviews {

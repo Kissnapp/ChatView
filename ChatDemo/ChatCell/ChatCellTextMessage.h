@@ -21,4 +21,6 @@
 
 @property (nonatomic, copy) NSString * message;
 
+@property (nonatomic) CGSize calculatedMessageSize;
+
 @end

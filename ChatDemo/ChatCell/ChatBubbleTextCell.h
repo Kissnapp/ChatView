@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 LIU CHONGLIANG. All rights reserved.
 //
 
-#import "ChatTableViewCell.h"
+#import "ChatTableViewCellTemplate.h"
 
 @class ChatCellTextMessage;
 
-@interface ChatTableViewTextCell : ChatTableViewCell
+@interface ChatBubbleTextCell : ChatTableViewCellTemplate
 @end

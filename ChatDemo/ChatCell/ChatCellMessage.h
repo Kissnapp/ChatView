@@ -10,7 +10,7 @@
 #import "UIKit/UIKit.h"
 
 FOUNDATION_EXPORT const CGFloat MessageCellBubblePadding;
-FOUNDATION_EXPORT const CGFloat MessageCellBubbleArrowWidth;
+FOUNDATION_EXPORT const CGFloat MessageCellBubbleTailWidth;
 FOUNDATION_EXPORT const CGFloat MessageCellTopPadding;
 FOUNDATION_EXPORT const CGFloat MessageCellMessageFontSize;
 FOUNDATION_EXPORT const CGFloat MessageCellMessageFromFontSize;
@@ -19,7 +19,6 @@ FOUNDATION_EXPORT const CGFloat MessageCellAvatarWidth;
 FOUNDATION_EXPORT const CGFloat MessageCellAvatarMargin;
 FOUNDATION_EXPORT const CGFloat MessageCellMessageFromMargin;
 FOUNDATION_EXPORT const CGFloat MessageCellMessageFromHeight;
-FOUNDATION_EXPORT const CGFloat MessageCellMessageFromWidth;
 
 #define MESSAGE_FROM_HEIGHT (MessageCellMessageFromHeight + MessageCellMessageFromMargin)
 
@@ -34,13 +33,15 @@ typedef NS_ENUM(NSUInteger, MessageType) {
     MessageTypeVoice
 };
 
-@class ChatTableViewCell;
+@class ChatTableViewCellTemplate;
 
 @interface ChatCellMessage : NSObject
 {
     @protected
     BOOL _showAvatar;
     MessageType _messageType;
+    CGSize _calulatedCellSize, _calculatedContentBoxSize;
+    
 }
 @property (nonatomic, copy) NSString * messageFrom;
 @property (nonatomic, strong) UIImage * avatar;
@@ -49,15 +50,15 @@ typedef NS_ENUM(NSUInteger, MessageType) {
 @property (nonatomic) BOOL showMessageFrom;
 @property (nonatomic) BOOL showAvatar;
 
-@property (nonatomic, readonly) CGSize calculatedBubbleSize;
+@property (nonatomic, readonly) CGSize calculatedContentBoxSize;
 @property (nonatomic, readonly) CGSize calculatedCellSize;
 
 @property (nonatomic, readonly) MessageType messageType;
 
-- (CGSize)sizeForCellMessage:(ChatCellMessage*)message constrainedToWidth:(CGFloat)width;
+- (void)calculateSizesByConstranedWidth:(CGFloat)width;
 
 - (BOOL)hasMessageFrom;
 
-- (ChatTableViewCell*)dequeAndCreateCellFromTableView:(UITableView*)tableView;
+- (ChatTableViewCellTemplate*)dequeAndCreateCellFromTableView:(UITableView*)tableView;
 
 @end

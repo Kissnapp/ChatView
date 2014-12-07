@@ -7,6 +7,11 @@
 //
 
 #import "ChatCellImageMessage.h"
+#import "ChatBubbleImageCell.h"
+#import "UIImage+Resize.h"
+
+@interface ChatCellImageMessage()
+@end
 
 @implementation ChatCellImageMessage
 
@@ -38,7 +43,15 @@
 }
 
 - (void)applyDefaults {
-    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat w = screenWidth * 0.7f;
+    if(_image.size.width > _image.size.height) {
+        if(_image.size.width > 2) {
+            _image = [_image resizedImageToFitInSize:CGSizeMake(w, _image.size.height) scaleIfSmaller:NO];
+        }
+    }
+    [self calculateSizesByConstranedWidth:w];
 }
 
 - (instancetype)initWithImage:(UIImage *)image direction:(MessageDirection)direction avatarImage:(UIImage *)avatarImage {
@@ -51,4 +64,35 @@
     }
     return self;
 }
+
+- (void)setImage:(UIImage *)image {
+    _image = image;
+    if(image) {
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenWidth = screenRect.size.width;
+        CGFloat w = screenWidth * 0.7f;
+        [self calculateSizesByConstranedWidth:w];
+    }
+}
+
+- (void)calculateSizesByConstranedWidth:(CGFloat)width {
+    CGSize imageSize = [_image size];
+    CGFloat cellHeight = MessageCellBubblePadding*2 + imageSize.height + MessageCellTopPadding;
+    
+    _calulatedCellSize = CGSizeMake(width, cellHeight);
+
+    _calculatedContentBoxSize = CGSizeMake(width, _calulatedCellSize.height - (MessageCellBubblePadding*2 + MessageCellTopPadding));
+}
+
+- (ChatTableViewCellTemplate*)dequeAndCreateCellFromTableView:(UITableView*)tableView
+{
+    static NSString * cellIdentifier = @"chatViewImageCell";
+    ChatBubbleImageCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if(!cell) {
+        cell = [[ChatBubbleImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    cell.message = self;
+    return cell;
+}
+
 @end
