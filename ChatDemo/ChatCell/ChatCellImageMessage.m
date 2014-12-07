@@ -45,11 +45,14 @@
 - (void)applyDefaults {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
-    CGFloat w = screenWidth * 0.7f;
+    CGFloat w = screenWidth * 0.4f;
     if(_image.size.width > _image.size.height) {
-        if(_image.size.width > 2) {
+        if(_image.size.width > w) {
             _image = [_image resizedImageToFitInSize:CGSizeMake(w, _image.size.height) scaleIfSmaller:NO];
         }
+    }
+    else {
+        _image = [_image resizedImageToFitInSize:CGSizeMake(w, _image.size.height) scaleIfSmaller:NO];
     }
     [self calculateSizesByConstranedWidth:w];
 }

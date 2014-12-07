@@ -32,6 +32,8 @@
 		ECAC8DFD1A3457DC00AEDAF0 /* UIImage+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAC8DFC1A3457DC00AEDAF0 /* UIImage+Utils.m */; };
 		ECAC8E001A34738900AEDAF0 /* talk_pop_l_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECAC8DFE1A34738900AEDAF0 /* talk_pop_l_mask@2x.png */; };
 		ECAC8E011A34738900AEDAF0 /* talk_pop_r_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECAC8DFF1A34738900AEDAF0 /* talk_pop_r_mask@2x.png */; };
+		ECAC8E051A3478BA00AEDAF0 /* meinv.png in Resources */ = {isa = PBXBuildFile; fileRef = ECAC8E041A3478BA00AEDAF0 /* meinv.png */; };
+		ECAC8E071A347B6100AEDAF0 /* picture-2.png in Resources */ = {isa = PBXBuildFile; fileRef = ECAC8E061A347B6100AEDAF0 /* picture-2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +74,8 @@
 		ECAC8DFC1A3457DC00AEDAF0 /* UIImage+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Utils.m"; sourceTree = "<group>"; };
 		ECAC8DFE1A34738900AEDAF0 /* talk_pop_l_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "talk_pop_l_mask@2x.png"; sourceTree = "<group>"; };
 		ECAC8DFF1A34738900AEDAF0 /* talk_pop_r_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "talk_pop_r_mask@2x.png"; sourceTree = "<group>"; };
+		ECAC8E041A3478BA00AEDAF0 /* meinv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meinv.png; sourceTree = "<group>"; };
+		ECAC8E061A347B6100AEDAF0 /* picture-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-2.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,8 @@
 		EC9F08811A2DA2AF000CA332 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ECAC8E061A347B6100AEDAF0 /* picture-2.png */,
+				ECAC8E041A3478BA00AEDAF0 /* meinv.png */,
 				ECAC8DFE1A34738900AEDAF0 /* talk_pop_l_mask@2x.png */,
 				ECAC8DFF1A34738900AEDAF0 /* talk_pop_r_mask@2x.png */,
 				EC3B59A31A318A2700738865 /* picture-1.png */,
@@ -245,6 +251,7 @@
 				EC2745691A3041DF009BD40F /* avatar-placeholder.png in Resources */,
 				ECAC8E011A34738900AEDAF0 /* talk_pop_r_mask@2x.png in Resources */,
 				EC27456A1A3041DF009BD40F /* avatar-placeholder@2x.png in Resources */,
+				ECAC8E051A3478BA00AEDAF0 /* meinv.png in Resources */,
 				EC27456C1A305635009BD40F /* avatar-heshang.png in Resources */,
 				EC9F085B1A2D96AB000CA332 /* Main.storyboard in Resources */,
 				EC9F08861A2DA2AF000CA332 /* talk_pop_l_nor@2x.png in Resources */,
@@ -252,6 +259,7 @@
 				EC9F08891A2DA2AF000CA332 /* talk_pop_r_p@2x.png in Resources */,
 				EC9F08601A2D96AB000CA332 /* LaunchScreen.xib in Resources */,
 				EC9F085D1A2D96AB000CA332 /* Images.xcassets in Resources */,
+				ECAC8E071A347B6100AEDAF0 /* picture-2.png in Resources */,
 				EC9F08881A2DA2AF000CA332 /* talk_pop_r_nor@2x.png in Resources */,
 				EC3B59A41A318A2700738865 /* picture-1.png in Resources */,
 				ECAC8E001A34738900AEDAF0 /* talk_pop_l_mask@2x.png in Resources */,

@@ -85,8 +85,8 @@
     self.view.backgroundColor = self.view.backgroundColor;
 }
 
-//- (void) viewDidAppear:(BOOL)animated {
-//    [super viewDidAppear:animated];
-//    [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_messages.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-//}
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [_tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_messages.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
 @end
