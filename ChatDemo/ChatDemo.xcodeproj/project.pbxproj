@@ -28,12 +28,12 @@
 		EC9F08881A2DA2AF000CA332 /* talk_pop_r_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC9F08841A2DA2AF000CA332 /* talk_pop_r_nor@2x.png */; };
 		EC9F08891A2DA2AF000CA332 /* talk_pop_r_p@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EC9F08851A2DA2AF000CA332 /* talk_pop_r_p@2x.png */; };
 		ECAC8DD91A329C8700AEDAF0 /* ChatBubbleImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAC8DD81A329C8700AEDAF0 /* ChatBubbleImageCell.m */; };
-		ECAC8DF51A32A35900AEDAF0 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAC8DEC1A32A35900AEDAF0 /* UIImage+Resize.m */; };
-		ECAC8DFD1A3457DC00AEDAF0 /* UIImage+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = ECAC8DFC1A3457DC00AEDAF0 /* UIImage+Utils.m */; };
 		ECAC8E001A34738900AEDAF0 /* talk_pop_l_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECAC8DFE1A34738900AEDAF0 /* talk_pop_l_mask@2x.png */; };
 		ECAC8E011A34738900AEDAF0 /* talk_pop_r_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECAC8DFF1A34738900AEDAF0 /* talk_pop_r_mask@2x.png */; };
 		ECAC8E051A3478BA00AEDAF0 /* meinv.png in Resources */ = {isa = PBXBuildFile; fileRef = ECAC8E041A3478BA00AEDAF0 /* meinv.png */; };
 		ECAC8E071A347B6100AEDAF0 /* picture-2.png in Resources */ = {isa = PBXBuildFile; fileRef = ECAC8E061A347B6100AEDAF0 /* picture-2.png */; };
+		ECADBBF71A3549B000B5B399 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = ECADBBF41A3549B000B5B399 /* UIImage+Resize.m */; };
+		ECADBBF81A3549B000B5B399 /* UIImage+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = ECADBBF61A3549B000B5B399 /* UIImage+Utils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,14 +68,14 @@
 		EC9F088A1A2DA54A000CA332 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		ECAC8DD71A329C8700AEDAF0 /* ChatBubbleImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatBubbleImageCell.h; sourceTree = "<group>"; };
 		ECAC8DD81A329C8700AEDAF0 /* ChatBubbleImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatBubbleImageCell.m; sourceTree = "<group>"; };
-		ECAC8DEB1A32A35900AEDAF0 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
-		ECAC8DEC1A32A35900AEDAF0 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
-		ECAC8DFB1A3457DC00AEDAF0 /* UIImage+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utils.h"; sourceTree = "<group>"; };
-		ECAC8DFC1A3457DC00AEDAF0 /* UIImage+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Utils.m"; sourceTree = "<group>"; };
 		ECAC8DFE1A34738900AEDAF0 /* talk_pop_l_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "talk_pop_l_mask@2x.png"; sourceTree = "<group>"; };
 		ECAC8DFF1A34738900AEDAF0 /* talk_pop_r_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "talk_pop_r_mask@2x.png"; sourceTree = "<group>"; };
 		ECAC8E041A3478BA00AEDAF0 /* meinv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meinv.png; sourceTree = "<group>"; };
 		ECAC8E061A347B6100AEDAF0 /* picture-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-2.png"; sourceTree = "<group>"; };
+		ECADBBF31A3549B000B5B399 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		ECADBBF41A3549B000B5B399 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		ECADBBF51A3549B000B5B399 /* UIImage+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Utils.h"; path = "Vendors/UIImage+Utils.h"; sourceTree = SOURCE_ROOT; };
+		ECADBBF61A3549B000B5B399 /* UIImage+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Utils.m"; path = "Vendors/UIImage+Utils.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,21 +174,38 @@
 		ECAC8DDA1A32A30800AEDAF0 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
-				ECAC8DFB1A3457DC00AEDAF0 /* UIImage+Utils.h */,
-				ECAC8DFC1A3457DC00AEDAF0 /* UIImage+Utils.m */,
-				ECAC8DDB1A32A35900AEDAF0 /* UIImage-Resize */,
+				ECADBBF01A3549B000B5B399 /* UIImage-Resize */,
+				ECADBBF51A3549B000B5B399 /* UIImage+Utils.h */,
+				ECADBBF61A3549B000B5B399 /* UIImage+Utils.m */,
 			);
 			name = Vendors;
 			path = ../../Vendors;
 			sourceTree = "<group>";
 		};
-		ECAC8DDB1A32A35900AEDAF0 /* UIImage-Resize */ = {
+		ECADBBF01A3549B000B5B399 /* UIImage-Resize */ = {
 			isa = PBXGroup;
 			children = (
-				ECAC8DEB1A32A35900AEDAF0 /* UIImage+Resize.h */,
-				ECAC8DEC1A32A35900AEDAF0 /* UIImage+Resize.m */,
+				ECADBBF11A3549B000B5B399 /* Example */,
+				ECADBBF31A3549B000B5B399 /* UIImage+Resize.h */,
+				ECADBBF41A3549B000B5B399 /* UIImage+Resize.m */,
 			);
-			path = "UIImage-Resize";
+			name = "UIImage-Resize";
+			path = "Vendors/UIImage-Resize";
+			sourceTree = SOURCE_ROOT;
+		};
+		ECADBBF11A3549B000B5B399 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				ECADBBF21A3549B000B5B399 /* Classes */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
+		ECADBBF21A3549B000B5B399 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,10 +298,10 @@
 				EC9F087F1A2D9FC7000CA332 /* ChatCellTextMessage.m in Sources */,
 				EC3B59A21A3183EE00738865 /* ChatCellImageMessage.m in Sources */,
 				EC3B599F1A315A4B00738865 /* ChatCellMessage.m in Sources */,
-				ECAC8DFD1A3457DC00AEDAF0 /* UIImage+Utils.m in Sources */,
+				ECADBBF81A3549B000B5B399 /* UIImage+Utils.m in Sources */,
 				EC9F087C1A2D9997000CA332 /* ChatViewController.m in Sources */,
-				ECAC8DF51A32A35900AEDAF0 /* UIImage+Resize.m in Sources */,
 				EC9F08561A2D96AB000CA332 /* AppDelegate.swift in Sources */,
+				ECADBBF71A3549B000B5B399 /* UIImage+Resize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
