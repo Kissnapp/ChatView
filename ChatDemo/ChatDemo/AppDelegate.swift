@@ -12,10 +12,15 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let v = XMPPWorker.sharedInstance
+        v.userJID = "liang@im.amazemobile.info"
+        v.userPassword = "123456"
+        v.hostPort = 5222
+        v.hostName = "im.amazemobile.info"
         return true
     }
 
@@ -35,12 +40,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        XMPPWorker.sharedInstance.connect()
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+       XMPPWorker.sharedInstance.teardownStream()
     }
-
-
 }
 

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ZYe-xx-Uu6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ZYe-xx-Uu6">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Demo View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="ChatDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ToDemos" id="vXZ-lx-hvc" customClass="DemoViewController" customModule="ChatDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -17,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0TW-xi-8dv" userLabel="View - Menu">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0TW-xi-8dv" userLabel="View - Menu">
                                 <rect key="frame" x="223" y="99" width="155" height="70"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tq3-oi-aln">
@@ -47,7 +46,30 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1217" y="377"/>
+            <point key="canvasLocation" x="1404" y="1087"/>
+        </scene>
+        <!--Roster View Controller-->
+        <scene sceneID="GJT-Wu-Egv">
+            <objects>
+                <viewController id="Nrv-fi-dHG" customClass="RosterViewController" customModule="ChatDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="69F-Cd-P4R"/>
+                        <viewControllerLayoutGuide type="bottom" id="efG-sK-8mT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RP8-FQ-ihe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="t5w-32-ytr"/>
+                    <connections>
+                        <segue destination="FCc-Pr-AFc" kind="show" identifier="ToChatViewController" id="B3j-s0-20q"/>
+                        <segue destination="vXZ-lx-hvc" kind="show" identifier="ToDemos" id="49J-TI-WIb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cOq-qx-vv8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="574" y="1087"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="j59-CO-Isp">
@@ -65,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15o-VU-kr0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="574" y="-350"/>
+            <point key="canvasLocation" x="1314" y="377"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cCg-Ub-xbv">
@@ -78,7 +100,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="haQ-sM-DfK"/>
+                        <segue destination="Nrv-fi-dHG" kind="relationship" relationship="rootViewController" id="4X3-Es-Qua"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAi-uy-mhU" userLabel="First Responder" sceneMemberID="firstResponder"/>

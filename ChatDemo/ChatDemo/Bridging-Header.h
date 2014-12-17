@@ -5,3 +5,7 @@
 #import "ChatViewController.h"
 #import "ChatCellTextMessage.h"
 #import "ChatCellImageMessage.h"
+
+#import "XMPPFramework.h"
+#import "XMPPMessageArchiving.h"
+#import "XMPPMessageArchivingCoreDataStorage.h"
