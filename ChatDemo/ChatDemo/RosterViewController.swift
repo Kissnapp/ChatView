@@ -116,8 +116,8 @@ class RosterViewController: UIViewController, NSFetchedResultsControllerDelegate
         let sections = self.fetchedResultsController.sections
         if section < sections?.count {
             let secInfo = sections?[section] as NSFetchedResultsSectionInfo?
-            NSLog("Section: %@", secInfo!.name!)
-            let s = secInfo?.name?.toInt()
+            NSLog("Section: %@", secInfo!.name)
+            let s = secInfo?.name.toInt()
             switch s! {
             case 0: return "Avaliable"
             case 1: return "Away"
