@@ -189,7 +189,7 @@ class RosterViewController: UIViewController, NSFetchedResultsControllerDelegate
                     let w = sizeArr[0] as NSString
                     let size = CGSizeMake(CGFloat(w.floatValue), CGFloat((sizeArr[1] as NSString).floatValue))
                     assert(sizeArr.count == 2)
-                    let cellImgMsg = ChatCellImageMessage(imageURL: url!, imageSize: size, direction: direction, avatarImage: avatar)
+                    let cellImgMsg = ChatCellImageMessage(placeholderWithURL:NSURL(string: url!), withImageSize:size, withDirection: direction, avatarImage: avatar)
                     cellImgMsg.messageOwner = m.message.fromStr()
                     chatCellMessages.append(cellImgMsg)
                 }

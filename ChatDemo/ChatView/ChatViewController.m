@@ -9,6 +9,7 @@
 #import "ChatViewController.h"
 #import "ChatTableViewCellTemplate.h"
 #import "ChatCellMessage.h"
+#import "SDWebImageManager.h"
 
 @interface ChatViewController ()<UITableViewDataSource, UITableViewDelegate, ChatTableViewCellDelegate>
 {
@@ -31,6 +32,9 @@
     _tableView.delegate = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.backgroundColor = [UIColor colorWithRed:219.0f/255.0f green:226.0f/255.0f blue:237.0f/255.0f alpha:1.0f];
+    
+    [[SDImageCache sharedImageCache] clearMemory];
+    [[SDImageCache sharedImageCache] clearDisk];
 }
 
 - (void)didReceiveMemoryWarning {

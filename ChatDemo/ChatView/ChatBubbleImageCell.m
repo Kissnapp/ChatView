@@ -13,7 +13,6 @@
 
 @interface ChatBubbleImageCell()
 {
-    UIImageView * _imageView;
     UIImageView * _bubbleView; // bubble view
     NSTimer * _holdPressTimer;
     UIActivityIndicatorView * _loadingActivityView;
@@ -21,6 +20,15 @@
 @end
 
 @implementation ChatBubbleImageCell
+
++ (SDImageCache*) imageCache {
+    static SDImageCache * imageCache = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        imageCache = [[SDImageCache alloc] initWithNamespace:@"chatCellImages"];
+    });
+    return imageCache;
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -31,10 +39,7 @@
         _imageLoadingStatus = ChatBubbleImageBeforeLoading;
         _loadingActivityView = nil;
         
-        _imageView = [[UIImageView alloc] init];
-        
         [self.textLabel removeFromSuperview];
-        [self.contentView addSubview: _imageView];
         [self.contentView addSubview:_avatarView];
         [self.contentView setFrame:self.frame];
         
@@ -50,12 +55,23 @@
     return self;
 }
 
-void setBubble(UIImageView * imageView, UIImage * image, NSString * imageName) {
+- (void)renderBubble:(UIImage*)image withImageName:(NSString*)imageName {
     UIEdgeInsets insets = UIEdgeInsetsMake(20.f, 20.f, 20.f, 20.f);
     UIImage *mask = [[[UIImage imageNamed:imageName] resizableImageWithCapInsets:insets]
-                     renderAtSize:image.size];
+                     renderAtSize:_bubbleView.bounds.size];
     UIImage *masked = [image maskWithImage:mask];
-    [imageView setImage: masked];
+    [_bubbleView setImage: masked];
+    
+    if(_loadingActivityView) {
+        if (_imageLoadingStatus == ChatBubbleImageLoading) {
+            _loadingActivityView.center = _bubbleView.center;
+            [_loadingActivityView setHidden:NO];
+        } else if(_imageLoadingStatus == ChatBubbleImageLoadingDone
+                  || _imageLoadingStatus == ChatBubbleImageLoadingFailed
+                  ) {
+            [_loadingActivityView removeFromSuperview];
+        }
+    }
 }
 
 - (void)layoutMessageBody
@@ -71,46 +87,57 @@ void setBubble(UIImageView * imageView, UIImage * image, NSString * imageName) {
         else
             m = 0;
         [_bubbleView setFrame:CGRectMake(m, 0, img.size.width, img.size.height)];
-        
     }
     
     if(_message.direction == MessageFromMe) {
-        setBubble(_bubbleView, ((ChatCellImageMessage*)_message).image, @"talk_pop_r_mask");
+        [self renderBubble:((ChatCellImageMessage*)_message).image withImageName:@"talk_pop_r_mask"];
     } else {
-        setBubble(_bubbleView, ((ChatCellImageMessage*)_message).image, @"talk_pop_l_mask");
+        [self renderBubble:((ChatCellImageMessage*)_message).image withImageName:@"talk_pop_l_mask"];
     }
 //    [_bodyView setBackgroundColor: [UIColor greenColor]];
 }
 
-- (BOOL)loadImage {
-    if (_imageURL) {
+- (void)setLoading {
+    ChatCellImageMessage* message = (ChatCellImageMessage*)_message;
+    if (message.image) {
         if (_loadingActivityView) [_loadingActivityView removeFromSuperview];
         _loadingActivityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         [_bubbleView addSubview:_loadingActivityView];
         [_loadingActivityView startAnimating];
         self.imageLoadingStatus = ChatBubbleImageLoading;
         _loadingActivityView.center = _bubbleView.center;
-        return YES;
+        return;
     }
     self.imageLoadingStatus = ChatBubbleImageLoadingFailed;
     if (_loadingActivityView) {
         [_loadingActivityView stopAnimating];
         [_loadingActivityView removeFromSuperview];
     }
-    return NO;
 }
 
 - (void)setMessage:(ChatCellMessage *)message
 {
     [super setMessage:message];
     if([message isKindOfClass:[ChatCellImageMessage class]]) {
-        UIImage * image = ((ChatCellImageMessage*)message).image;
-        [_imageView setImage:image];
-        _imageView.contentMode = UIViewContentModeScaleAspectFit;
-        
-//        UIActivityIndicatorView * activityView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-//        [_bubbleView addSubview:activityView];
-//        [activityView startAnimating];
+        ChatCellImageMessage * msg = (ChatCellImageMessage*)message;
+        if (msg.imageURL) {
+            [[SDWebImageManager sharedManager] downloadImageWithURL:msg.imageURL options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+            } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+                if (image && finished) {
+                    UIImage * img = [image renderAtSize:msg.image.size];
+                    msg.image = img;
+                    _imageLoadingStatus = ChatBubbleImageLoadingDone;
+                    if(_message.direction == MessageFromMe) {
+                        [self renderBubble:((ChatCellImageMessage*)_message).image withImageName:@"talk_pop_r_mask"];
+                    } else {
+                        [self renderBubble:((ChatCellImageMessage*)_message).image withImageName:@"talk_pop_l_mask"];
+                    }
+                }
+            }];
+            [_loadingActivityView setHidden:YES];
+            _imageLoadingStatus = ChatBubbleImageLoading;
+            [self setLoading];
+        }
     }
 }
 

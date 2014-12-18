@@ -12,13 +12,13 @@
 + (instancetype)messageWithImage:(UIImage*)image;
 + (instancetype)messageWithImage:(UIImage *)image avatarImage:(UIImage *)avatarImage;
 + (instancetype)messageWithImage:(UIImage *)image direction:(MessageDirection)direction avatarImage:(UIImage *)avatarImage;
-
-+ (instancetype)messageWithImageURL:(NSString *)imageURL imageSize:(CGSize)size direction:(MessageDirection)direction avatarImage:(UIImage *)avatarImage;
++ (instancetype)messageWithBlankImageWithURL:(NSURL*)url withImageSize:(CGSize)size withDirection:(MessageDirection)direction avatarImage:(UIImage *)avatarImage;
 
 - (instancetype)initWithImage:(UIImage *)avatarImage;
 - (instancetype)initWithImage:(UIImage *)image avatarImage:(UIImage *)avatarImage;
 - (instancetype)initWithImage:(UIImage *)image direction:(MessageDirection)direction avatarImage:(UIImage *)avatarImage;
-- (instancetype)initWithImageURL:(NSString *)imageURL imageSize:(CGSize)size direction:(MessageDirection)direction avatarImage:(UIImage *)avatarImage;
+- (instancetype)initPlaceholderWithURL:(NSURL*)url withImageSize:(CGSize)size withDirection:(MessageDirection)direction avatarImage:(UIImage *)avatarImage;
 
 @property (nonatomic, strong) UIImage * image;
+@property (nonatomic, strong) NSURL * imageURL;
 @end

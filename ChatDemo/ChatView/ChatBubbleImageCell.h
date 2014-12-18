@@ -18,8 +18,5 @@ typedef NS_ENUM(NSUInteger, ChatBubbleImageLoadStatus) {
 @interface ChatBubbleImageCell : ChatTableViewCellTemplate
 
 @property (nonatomic, assign) ChatBubbleImageLoadStatus imageLoadingStatus;
-@property (nonatomic, copy) NSString * imageURL;
-
-- (BOOL)loadImage;
 
 @end
