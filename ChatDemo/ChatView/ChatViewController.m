@@ -23,18 +23,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _messages = [NSMutableArray array];
     
-    self.title = @"ChatView Demo";
-    _tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStylePlain];
-    [self.view addSubview:_tableView];
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
-    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _tableView.backgroundColor = [UIColor colorWithRed:219.0f/255.0f green:226.0f/255.0f blue:237.0f/255.0f alpha:1.0f];
-    
-    [[SDImageCache sharedImageCache] clearMemory];
-    [[SDImageCache sharedImageCache] clearDisk];
+    [self initData];
+    [self initParameters];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,6 +37,32 @@
 {
     [self ensureViewLoaded];
     [_messages addObjectsFromArray:messages];
+}
+
+#pragma mark -
+#pragma mark - init the UI Methods
+
+- (void)initData {
+    _messages = [NSMutableArray array];
+}
+
+-(void)initParameters {
+    CGRect frame = self.view.frame;
+    self.title = @"ChatView Demo";
+    _tableView = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStylePlain];
+    [self.view addSubview:_tableView];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.backgroundColor = [UIColor colorWithRed:219.0f/255.0f green:226.0f/255.0f blue:237.0f/255.0f alpha:1.0f];
+     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0)
+    {
+//        _tableView.contentInset = UIEdgeInsetsMake(44 + 20, 0, 0, 0);
+        [_tableView setFrame:CGRectMake(0, 64, frame.size.width, frame.size.height - 64)];
+    }
+
+    [[SDImageCache sharedImageCache] clearMemory];
+    [[SDImageCache sharedImageCache] clearDisk];
 }
 
 #pragma mark -
