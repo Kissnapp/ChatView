@@ -62,6 +62,7 @@
 		EC3B59A41A318A2700738865 /* picture-1.png in Resources */ = {isa = PBXBuildFile; fileRef = EC3B59A31A318A2700738865 /* picture-1.png */; };
 		EC3B59AA1A31B29B00738865 /* ChatBubbleTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3B59A91A31B29B00738865 /* ChatBubbleTextCell.m */; };
 		EC4741131A369B8000726604 /* RosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4741121A369B8000726604 /* RosterViewController.swift */; };
+		EC48C1781A5A343800A4B441 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = EC48C1771A5A343800A4B441 /* UIImage+Resize.m */; };
 		EC99F8E91A3591B900849ADE /* XMPPWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F8E81A3591B900849ADE /* XMPPWorker.swift */; };
 		EC9F08561A2D96AB000CA332 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9F08551A2D96AB000CA332 /* AppDelegate.swift */; };
 		EC9F08581A2D96AB000CA332 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9F08571A2D96AB000CA332 /* DemoViewController.swift */; };
@@ -80,7 +81,6 @@
 		ECAC8E011A34738900AEDAF0 /* talk_pop_r_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ECAC8DFF1A34738900AEDAF0 /* talk_pop_r_mask@2x.png */; };
 		ECAC8E051A3478BA00AEDAF0 /* meinv.png in Resources */ = {isa = PBXBuildFile; fileRef = ECAC8E041A3478BA00AEDAF0 /* meinv.png */; };
 		ECAC8E071A347B6100AEDAF0 /* picture-2.png in Resources */ = {isa = PBXBuildFile; fileRef = ECAC8E061A347B6100AEDAF0 /* picture-2.png */; };
-		ECADBBF71A3549B000B5B399 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = ECADBBF41A3549B000B5B399 /* UIImage+Resize.m */; };
 		ECADBBF81A3549B000B5B399 /* UIImage+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = ECADBBF61A3549B000B5B399 /* UIImage+Utils.m */; };
 		ECDF96F71A35A8BB00C6D6BF /* XMPPBandwidthMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDF95FC1A35A8BA00C6D6BF /* XMPPBandwidthMonitor.m */; };
 		ECDF96F81A35A8BB00C6D6BF /* XMPPCoreDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = ECDF95FF1A35A8BA00C6D6BF /* XMPPCoreDataStorage.m */; };
@@ -355,6 +355,8 @@
 		EC3B59A81A31B29B00738865 /* ChatBubbleTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatBubbleTextCell.h; sourceTree = "<group>"; };
 		EC3B59A91A31B29B00738865 /* ChatBubbleTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatBubbleTextCell.m; sourceTree = "<group>"; };
 		EC4741121A369B8000726604 /* RosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterViewController.swift; sourceTree = "<group>"; };
+		EC48C1761A5A343800A4B441 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		EC48C1771A5A343800A4B441 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		EC7D9DDD1A381E6C002169CC /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		EC99F8E81A3591B900849ADE /* XMPPWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMPPWorker.swift; sourceTree = "<group>"; };
 		EC9F08501A2D96AB000CA332 /* ChatDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -381,8 +383,6 @@
 		ECAC8DFF1A34738900AEDAF0 /* talk_pop_r_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "talk_pop_r_mask@2x.png"; sourceTree = "<group>"; };
 		ECAC8E041A3478BA00AEDAF0 /* meinv.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meinv.png; sourceTree = "<group>"; };
 		ECAC8E061A347B6100AEDAF0 /* picture-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-2.png"; sourceTree = "<group>"; };
-		ECADBBF31A3549B000B5B399 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
-		ECADBBF41A3549B000B5B399 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		ECADBBF51A3549B000B5B399 /* UIImage+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Utils.h"; path = "Vendors/UIImage+Utils.h"; sourceTree = SOURCE_ROOT; };
 		ECADBBF61A3549B000B5B399 /* UIImage+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Utils.m"; path = "Vendors/UIImage+Utils.m"; sourceTree = SOURCE_ROOT; };
 		ECDF95FB1A35A8BA00C6D6BF /* XMPPBandwidthMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMPPBandwidthMonitor.h; sourceTree = "<group>"; };
@@ -1000,6 +1000,16 @@
 			path = XMPPExts;
 			sourceTree = "<group>";
 		};
+		EC48C1751A5A343800A4B441 /* UIImage-Resize */ = {
+			isa = PBXGroup;
+			children = (
+				EC48C1761A5A343800A4B441 /* UIImage+Resize.h */,
+				EC48C1771A5A343800A4B441 /* UIImage+Resize.m */,
+			);
+			name = "UIImage-Resize";
+			path = "Vendors/UIImage-Resize";
+			sourceTree = SOURCE_ROOT;
+		};
 		EC9F08471A2D96AB000CA332 = {
 			isa = PBXGroup;
 			children = (
@@ -1091,41 +1101,15 @@
 		ECAC8DDA1A32A30800AEDAF0 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				EC48C1751A5A343800A4B441 /* UIImage-Resize */,
 				ECE992931A3D2BF000C4CEC0 /* SDWebImage */,
 				ECE991451A3D2BA100C4CEC0 /* libwebp */,
 				EC2D1D381A354DF700DED009 /* XMPPFramework */,
-				ECADBBF01A3549B000B5B399 /* UIImage-Resize */,
 				ECADBBF51A3549B000B5B399 /* UIImage+Utils.h */,
 				ECADBBF61A3549B000B5B399 /* UIImage+Utils.m */,
 			);
 			name = Vendors;
 			path = ../../Vendors;
-			sourceTree = "<group>";
-		};
-		ECADBBF01A3549B000B5B399 /* UIImage-Resize */ = {
-			isa = PBXGroup;
-			children = (
-				ECADBBF11A3549B000B5B399 /* Example */,
-				ECADBBF31A3549B000B5B399 /* UIImage+Resize.h */,
-				ECADBBF41A3549B000B5B399 /* UIImage+Resize.m */,
-			);
-			name = "UIImage-Resize";
-			path = "Vendors/UIImage-Resize";
-			sourceTree = SOURCE_ROOT;
-		};
-		ECADBBF11A3549B000B5B399 /* Example */ = {
-			isa = PBXGroup;
-			children = (
-				ECADBBF21A3549B000B5B399 /* Classes */,
-			);
-			path = Example;
-			sourceTree = "<group>";
-		};
-		ECADBBF21A3549B000B5B399 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		ECDF95F91A35A8BA00C6D6BF /* Extensions */ = {
@@ -2134,6 +2118,7 @@
 				ECDF97321A35A8BB00C6D6BF /* NSDate+XMPPDateTimeProfiles.m in Sources */,
 				EC2D20721A354DFA00DED009 /* XMPPSCRAMSHA1Authentication.m in Sources */,
 				EC99F8E91A3591B900849ADE /* XMPPWorker.swift in Sources */,
+				EC48C1781A5A343800A4B441 /* UIImage+Resize.m in Sources */,
 				EC2D207C1A354DFA00DED009 /* XMPPJID.m in Sources */,
 				ECDF97291A35A8BB00C6D6BF /* XMPPvCardTempTel.m in Sources */,
 				ECDF973E1A35A8BB00C6D6BF /* XMPPMessageArchiving_Contact_CoreDataObject.m in Sources */,
@@ -2161,7 +2146,6 @@
 				ECE992551A3D2BA200C4CEC0 /* lossless_mips32.c in Sources */,
 				ECDF97531A35A8BB00C6D6BF /* XMPPMessage+XEP_0280.m in Sources */,
 				ECDF97471A35A8BB00C6D6BF /* XMPPBlocking.m in Sources */,
-				ECADBBF71A3549B000B5B399 /* UIImage+Resize.m in Sources */,
 				EC2D20811A354DFA00DED009 /* XMPPStream.m in Sources */,
 				EC2D20E61A354DFA00DED009 /* GCDMulticastDelegate.m in Sources */,
 				ECE992BC1A3D2BF000C4CEC0 /* SDWebImageManager.m in Sources */,
