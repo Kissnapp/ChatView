@@ -31,6 +31,7 @@ class DemoViewController: UIViewController {
             ChatCellTextMessage(string: "Yes, but even one case of someone getting hurt because of the defect would be a PR nightmare, and that’s on top of the charges of negligence we’d have to face in court. We need to get ahead of this now", direction: MessageDirection.FromOppsite, avatarImage: UIImage(named: "avatar-women")),
             ChatCellTextMessage(string: "All right!", direction: MessageDirection.FromOppsite, avatarImage: UIImage(named: "avatar-women")),
             ChatCellTextMessage(string: "OMG!", direction: MessageDirection.FromOppsite, avatarImage: UIImage(named: "avatar-women")),
+            ChatCellTimeLabel(timeString: "41 years ago"),
             ChatCellTextMessage(string: "火车票预售期延长春运开票时间大大提早扎堆抢票可能性降低2015 年的春节比往年晚到，但由于铁路部门将火车票预售期延长，因此 2015 年春运开票时间却大大提早。", direction: MessageDirection.FromMe, avatarImage: UIImage(named: "avatar-heshang")),
             ChatCellImageMessage(image: UIImage(named: "picture-1"), avatarImage: UIImage(named: "avatar-heshang")),
             ChatCellImageMessage(image: UIImage(named: "meinv"), direction:MessageDirection.FromOppsite, avatarImage: UIImage(named: "avatar-women")),

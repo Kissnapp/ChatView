@@ -63,6 +63,9 @@
 		EC3B59AA1A31B29B00738865 /* ChatBubbleTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC3B59A91A31B29B00738865 /* ChatBubbleTextCell.m */; };
 		EC4741131A369B8000726604 /* RosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4741121A369B8000726604 /* RosterViewController.swift */; };
 		EC48C1781A5A343800A4B441 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = EC48C1771A5A343800A4B441 /* UIImage+Resize.m */; };
+		EC6BCD371A6F46EB00FCA460 /* ChatTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6BCD361A6F46EB00FCA460 /* ChatTimeCell.m */; };
+		EC6BCD3A1A6F489C00FCA460 /* ChatCellTimeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6BCD391A6F489C00FCA460 /* ChatCellTimeLabel.m */; };
+		EC6BCD401A6F84BE00FCA460 /* NSDate+TimeAgo.m in Sources */ = {isa = PBXBuildFile; fileRef = EC6BCD3F1A6F84BE00FCA460 /* NSDate+TimeAgo.m */; };
 		EC99F8E91A3591B900849ADE /* XMPPWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC99F8E81A3591B900849ADE /* XMPPWorker.swift */; };
 		EC9F08561A2D96AB000CA332 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9F08551A2D96AB000CA332 /* AppDelegate.swift */; };
 		EC9F08581A2D96AB000CA332 /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC9F08571A2D96AB000CA332 /* DemoViewController.swift */; };
@@ -357,6 +360,12 @@
 		EC4741121A369B8000726604 /* RosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RosterViewController.swift; sourceTree = "<group>"; };
 		EC48C1761A5A343800A4B441 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		EC48C1771A5A343800A4B441 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		EC6BCD351A6F46EB00FCA460 /* ChatTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTimeCell.h; sourceTree = "<group>"; };
+		EC6BCD361A6F46EB00FCA460 /* ChatTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTimeCell.m; sourceTree = "<group>"; };
+		EC6BCD381A6F489C00FCA460 /* ChatCellTimeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCellTimeLabel.h; sourceTree = "<group>"; };
+		EC6BCD391A6F489C00FCA460 /* ChatCellTimeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCellTimeLabel.m; sourceTree = "<group>"; };
+		EC6BCD3E1A6F84BE00FCA460 /* NSDate+TimeAgo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+TimeAgo.h"; path = "../ChatView/ChatDemo/ChatView/NSDate+TimeAgo.h"; sourceTree = "<group>"; };
+		EC6BCD3F1A6F84BE00FCA460 /* NSDate+TimeAgo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+TimeAgo.m"; path = "../ChatView/ChatDemo/ChatView/NSDate+TimeAgo.m"; sourceTree = "<group>"; };
 		EC7D9DDD1A381E6C002169CC /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		EC99F8E81A3591B900849ADE /* XMPPWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMPPWorker.swift; sourceTree = "<group>"; };
 		EC9F08501A2D96AB000CA332 /* ChatDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1066,6 +1075,8 @@
 				EC3B59A91A31B29B00738865 /* ChatBubbleTextCell.m */,
 				ECAC8DD71A329C8700AEDAF0 /* ChatBubbleImageCell.h */,
 				ECAC8DD81A329C8700AEDAF0 /* ChatBubbleImageCell.m */,
+				EC6BCD351A6F46EB00FCA460 /* ChatTimeCell.h */,
+				EC6BCD361A6F46EB00FCA460 /* ChatTimeCell.m */,
 				EC9F087A1A2D9997000CA332 /* ChatViewController.h */,
 				EC9F087B1A2D9997000CA332 /* ChatViewController.m */,
 				EC3B599D1A315A4B00738865 /* ChatCellMessage.h */,
@@ -1074,6 +1085,8 @@
 				EC9F087E1A2D9FC7000CA332 /* ChatCellTextMessage.m */,
 				EC3B59A01A3183EE00738865 /* ChatCellImageMessage.h */,
 				EC3B59A11A3183EE00738865 /* ChatCellImageMessage.m */,
+				EC6BCD381A6F489C00FCA460 /* ChatCellTimeLabel.h */,
+				EC6BCD391A6F489C00FCA460 /* ChatCellTimeLabel.m */,
 			);
 			path = ChatView;
 			sourceTree = "<group>";
@@ -1101,6 +1114,8 @@
 		ECAC8DDA1A32A30800AEDAF0 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				EC6BCD3E1A6F84BE00FCA460 /* NSDate+TimeAgo.h */,
+				EC6BCD3F1A6F84BE00FCA460 /* NSDate+TimeAgo.m */,
 				EC48C1751A5A343800A4B441 /* UIImage-Resize */,
 				ECE992931A3D2BF000C4CEC0 /* SDWebImage */,
 				ECE991451A3D2BA100C4CEC0 /* libwebp */,
@@ -2034,6 +2049,7 @@
 				ECE9923F1A3D2BA200C4CEC0 /* quant.c in Sources */,
 				EC4741131A369B8000726604 /* RosterViewController.swift in Sources */,
 				EC3B59AA1A31B29B00738865 /* ChatBubbleTextCell.m in Sources */,
+				EC6BCD401A6F84BE00FCA460 /* NSDate+TimeAgo.m in Sources */,
 				ECDF97101A35A8BB00C6D6BF /* XMPPRoomCoreDataStorage.m in Sources */,
 				ECDF97241A35A8BB00C6D6BF /* XMPPvCardTempAdrTypes.m in Sources */,
 				ECE992511A3D2BA200C4CEC0 /* enc_mips32.c in Sources */,
@@ -2091,6 +2107,8 @@
 				EC2D20EF1A354DFA00DED009 /* DDFileLogger.m in Sources */,
 				ECE9924C1A3D2BA200C4CEC0 /* dec_mips32.c in Sources */,
 				ECDF96FA1A35A8BB00C6D6BF /* XMPPIncomingFileTransfer.m in Sources */,
+				EC6BCD371A6F46EB00FCA460 /* ChatTimeCell.m in Sources */,
+				EC6BCD3A1A6F489C00FCA460 /* ChatCellTimeLabel.m in Sources */,
 				ECDF97051A35A8BB00C6D6BF /* XMPPRosterMemoryStorage.m in Sources */,
 				ECE9923D1A3D2BA200C4CEC0 /* io.c in Sources */,
 				EC2D20741A354DFA00DED009 /* XMPPXOAuth2Google.m in Sources */,
